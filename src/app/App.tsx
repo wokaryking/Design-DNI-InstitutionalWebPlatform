@@ -1,14 +1,15 @@
 import { useState, useEffect, useRef } from "react";
 import {
-  Shield, Globe, Search, Menu, X, ChevronRight, ChevronDown,
-  AlertTriangle, CheckCircle, Monitor, Radio, Lock, BookOpen,
-  Users, Eye, Cpu, Handshake, Zap, FileText, Bell, GraduationCap,
-  UserPlus, Newspaper, Phone, Mail, MapPin, ExternalLink, ArrowRight,
-  TrendingUp, BarChart2, Activity, Flag, Building2, Wifi, Database,
-  Info, Calendar, Clock, Star, Award, Target, Layers, Network
+  Globe, Search, Menu, X, ChevronRight, ChevronDown,
+  AlertTriangle, Monitor, Radio, Lock, BookOpen,
+  Eye, Handshake, Bell, GraduationCap,
+  UserPlus, Newspaper, Phone, Mail, MapPin, ArrowRight,
+  TrendingUp, Activity, Flag, Building2,
+  Info, Clock, Star, Award, Target, Layers, Network,
+  Shield, Cpu, Zap
 } from "lucide-react";
 import heroImg from "@/imports/ChatGPT_Image_21_jun_2026__14_10_49.png";
-import mobileHeroImg from "@/imports/ChatGPT_Image_21_jun_2026__19_55_33.png";
+import dniLogo from "@/imports/logodni.png";
 
 // ─── Utility ────────────────────────────────────────────────────────────────
 
@@ -167,10 +168,31 @@ function LevelDot({ level }: { level: ThreatIndicator["level"] }) {
 
 // ─── Header ──────────────────────────────────────────────────────────────────
 
+const INSTITUCION_ITEMS = [
+  { label: "Sobre Nosotros", href: "#sobre-nosotros", desc: "Quiénes somos y nuestra estructura" },
+  { label: "Historia", href: "#historia", desc: "Origen y trayectoria institucional" },
+  { label: "Misión, Visión y Valores", href: "#mision", desc: "Nuestros principios rectores" },
+  { label: "Marco Legal", href: "#marco-legal", desc: "Ley No. 1-24 y normativa vigente" },
+];
+
+const AREAS_ITEMS = [
+  { label: "Ciberseguridad", desc: "Defensa digital nacional", icon: <Monitor size={16} /> },
+  { label: "Criptografía Nacional", desc: "Seguridad de comunicaciones", icon: <Lock size={16} /> },
+  { label: "Investigación de Ciberdelitos", desc: "Análisis de amenazas digitales", icon: <Search size={16} /> },
+  { label: "Inteligencia Estratégica", desc: "Análisis de largo plazo", icon: <Target size={16} /> },
+  { label: "Cooperación Internacional", desc: "Alianzas con agencias aliadas", icon: <Globe size={16} /> },
+  { label: "Inteligencia Delictiva", desc: "Crimen organizado y redes", icon: <AlertTriangle size={16} /> },
+  { label: "Inteligencia Prospectiva", desc: "Escenarios y tendencias futuras", icon: <TrendingUp size={16} /> },
+  { label: "Contrainteligencia", desc: "Detección y neutralización", icon: <Shield size={16} /> },
+];
+
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -178,17 +200,34 @@ function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    const onClickOutside = (e: MouseEvent) => {
+      if (headerRef.current && !headerRef.current.contains(e.target as Node)) {
+        setActiveDropdown(null);
+      }
+    };
+    document.addEventListener("mousedown", onClickOutside);
+    return () => document.removeEventListener("mousedown", onClickOutside);
+  }, []);
+
+  const toggleDropdown = (name: string) => {
+    setActiveDropdown(activeDropdown === name ? null : name);
+  };
+
   return (
     <>
       {/* Top bar */}
-      <div className="bg-[#051535] border-b border-[#C9A55C]/20 hidden md:flex items-center justify-between px-8 py-1.5 text-[11px] text-[#8FA4C8] tracking-wider">
-        <span className="font-['JetBrains_Mono']">REPÚBLICA DOMINICANA — DIRECCIÓN NACIONAL DE INTELIGENCIA</span>
-        <div className="flex items-center gap-6">
-          <span>Transparencia</span>
-          <span>Portal Ciudadano</span>
+      <div className="bg-[#030E28] border-b border-white/8 hidden md:flex items-center justify-between px-8 py-1.5 text-[11px] text-[#8FA4C8]">
+        <div className="flex items-center gap-2">
+          {/* DR flag emoji substitute */}
+          <span className="text-xs">🇩🇴</span>
+          <span className="font-['JetBrains_Mono'] tracking-wider">República Dominicana</span>
+        </div>
+        <div className="flex items-center gap-5">
+          <a href="#" className="hover:text-white transition-colors">Portal Ciudadano</a>
           <div className="flex items-center gap-2">
-            <button className="hover:text-[#C9A55C] transition-colors font-semibold">ES</button>
-            <span className="opacity-40">|</span>
+            <button className="hover:text-[#C9A55C] transition-colors font-semibold text-white">ES</button>
+            <span className="opacity-30">|</span>
             <button className="hover:text-[#C9A55C] transition-colors">EN</button>
           </div>
         </div>
@@ -196,58 +235,191 @@ function Header() {
 
       {/* Main nav */}
       <header
+        ref={headerRef}
         className={cn(
           "sticky top-0 z-50 transition-all duration-300",
           scrolled
-            ? "bg-[#071D49]/98 backdrop-blur-md shadow-[0_4px_30px_rgba(0,0,0,0.5)] border-b border-[#C9A55C]/20"
-            : "bg-[#071D49]"
+            ? "bg-[#071D49]/98 backdrop-blur-md shadow-[0_2px_20px_rgba(0,0,0,0.6)] border-b border-white/10"
+            : "bg-[#071D49] border-b border-white/8"
         )}
       >
-        <div className="max-w-[1400px] mx-auto px-6 md:px-8 flex items-center justify-between h-16 md:h-20">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-10 flex items-center justify-between h-[68px] md:h-[76px]">
+
           {/* Logo */}
           <a href="#" className="flex items-center gap-3 shrink-0">
-            <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#C9A55C]/10 border border-[#C9A55C]/40 flex items-center justify-center">
-              <Shield size={20} className="text-[#C9A55C]" />
-            </div>
-            <div>
-              <div className="text-white font-bold text-base md:text-lg leading-tight font-['Plus_Jakarta_Sans']">DNI</div>
-              <div className="text-[#8FA4C8] text-[9px] md:text-[10px] tracking-widest uppercase font-['JetBrains_Mono'] leading-tight">
-                Dirección Nacional de Inteligencia
+            <img
+              src={dniLogo}
+              alt="Dirección Nacional de Inteligencia — República Dominicana"
+              className="w-11 h-11 md:w-13 md:h-13 object-contain"
+              style={{ width: "48px", height: "48px" }}
+            />
+            <div className="hidden sm:block">
+              <div className="text-white font-bold text-[15px] leading-tight font-['Plus_Jakarta_Sans']">
+                Dirección Nacional
+              </div>
+              <div className="text-[#C9A55C] text-[11px] font-semibold tracking-wide font-['Plus_Jakarta_Sans'] leading-tight">
+                de Inteligencia
               </div>
             </div>
           </a>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-1">
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="px-3 py-2 text-[13px] text-[#C8D8F0] hover:text-white hover:bg-white/5 rounded transition-all duration-200 font-medium font-['Plus_Jakarta_Sans'] tracking-wide"
+          <nav className="hidden lg:flex items-center">
+            {/* Inicio */}
+            <a
+              href="#"
+              className="px-4 py-2 text-[13.5px] text-[#C8D8F0] hover:text-white transition-colors font-medium font-['Plus_Jakarta_Sans'] tracking-wide"
+            >
+              Inicio
+            </a>
+
+            {/* Institución dropdown */}
+            <div className="relative">
+              <button
+                onClick={() => toggleDropdown("institucion")}
+                onMouseEnter={() => setActiveDropdown("institucion")}
+                className={cn(
+                  "flex items-center gap-1.5 px-4 py-2 text-[13.5px] font-medium font-['Plus_Jakarta_Sans'] tracking-wide transition-colors",
+                  activeDropdown === "institucion" ? "text-white" : "text-[#C8D8F0] hover:text-white"
+                )}
               >
-                {link.label}
+                Institución
+                <ChevronDown
+                  size={13}
+                  className={cn("transition-transform duration-200", activeDropdown === "institucion" && "rotate-180")}
+                />
+              </button>
+
+              {activeDropdown === "institucion" && (
+                <div
+                  className="absolute top-full left-0 mt-1 w-64 bg-[#051535] border border-[#C9A55C]/20 rounded-lg shadow-[0_8px_32px_rgba(0,0,0,0.5)] overflow-hidden"
+                  onMouseLeave={() => setActiveDropdown(null)}
+                >
+                  <div className="p-2">
+                    {INSTITUCION_ITEMS.map((item) => (
+                      <a
+                        key={item.label}
+                        href={item.href}
+                        onClick={() => setActiveDropdown(null)}
+                        className="group flex flex-col px-4 py-3 rounded-md hover:bg-white/5 transition-colors"
+                      >
+                        <span className="text-[13px] font-semibold text-white group-hover:text-[#C9A55C] transition-colors font-['Plus_Jakarta_Sans']">
+                          {item.label}
+                        </span>
+                        <span className="text-[11px] text-[#8FA4C8] mt-0.5 font-['Plus_Jakarta_Sans']">
+                          {item.desc}
+                        </span>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Áreas de Trabajo mega-menu */}
+            <div className="relative">
+              <button
+                onClick={() => toggleDropdown("areas")}
+                onMouseEnter={() => setActiveDropdown("areas")}
+                className={cn(
+                  "flex items-center gap-1.5 px-4 py-2 text-[13.5px] font-medium font-['Plus_Jakarta_Sans'] tracking-wide transition-colors",
+                  activeDropdown === "areas" ? "text-white" : "text-[#C8D8F0] hover:text-white"
+                )}
+              >
+                Áreas de Trabajo
+                <ChevronDown
+                  size={13}
+                  className={cn("transition-transform duration-200", activeDropdown === "areas" && "rotate-180")}
+                />
+              </button>
+
+              {activeDropdown === "areas" && (
+                <div
+                  className="absolute top-full left-1/2 -translate-x-1/2 mt-1 w-[580px] bg-[#051535] border border-[#C9A55C]/20 rounded-lg shadow-[0_8px_32px_rgba(0,0,0,0.5)] overflow-hidden"
+                  onMouseLeave={() => setActiveDropdown(null)}
+                >
+                  <div className="px-4 pt-4 pb-2 border-b border-white/8">
+                    <span className="text-[10px] font-bold tracking-[0.2em] text-[#C9A55C] uppercase font-['JetBrains_Mono']">
+                      Áreas de Trabajo
+                    </span>
+                  </div>
+                  <div className="grid grid-cols-2 gap-0 p-3">
+                    {AREAS_ITEMS.map((item) => (
+                      <a
+                        key={item.label}
+                        href="#areas-trabajo"
+                        onClick={() => setActiveDropdown(null)}
+                        className="group flex items-start gap-3 px-3 py-2.5 rounded-md hover:bg-white/5 transition-colors"
+                      >
+                        <div className="mt-0.5 w-7 h-7 rounded-md bg-[#C9A55C]/10 flex items-center justify-center text-[#C9A55C] shrink-0 group-hover:bg-[#C9A55C]/20 transition-colors">
+                          {item.icon}
+                        </div>
+                        <div>
+                          <div className="text-[12.5px] font-semibold text-white group-hover:text-[#C9A55C] transition-colors font-['Plus_Jakarta_Sans'] leading-tight">
+                            {item.label}
+                          </div>
+                          <div className="text-[11px] text-[#8FA4C8] mt-0.5 font-['Plus_Jakarta_Sans']">
+                            {item.desc}
+                          </div>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* SNI with tooltip */}
+            <div className="relative group">
+              <a
+                href="#sni"
+                className="px-4 py-2 text-[13.5px] text-[#C8D8F0] hover:text-white transition-colors font-medium font-['Plus_Jakarta_Sans'] tracking-wide"
+              >
+                SNI
               </a>
-            ))}
+              <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 px-3 py-1.5 bg-[#051535] border border-[#C9A55C]/20 rounded-md shadow-lg opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-200 whitespace-nowrap z-10">
+                <span className="text-[11px] text-[#C9A55C] font-['JetBrains_Mono']">Sistema Nacional de Inteligencia</span>
+              </div>
+            </div>
+
+            {/* Contacto */}
+            <a
+              href="#contacto"
+              className="px-4 py-2 text-[13.5px] text-[#C8D8F0] hover:text-white transition-colors font-medium font-['Plus_Jakarta_Sans'] tracking-wide"
+            >
+              Contacto
+            </a>
           </nav>
 
-          {/* Actions */}
-          <div className="flex items-center gap-3">
+          {/* Right actions */}
+          <div className="flex items-center gap-2 md:gap-3">
             <button
-              onClick={() => setSearchOpen(!searchOpen)}
-              className="w-9 h-9 flex items-center justify-center text-[#8FA4C8] hover:text-white hover:bg-white/5 rounded transition-all"
+              onClick={() => { setSearchOpen(!searchOpen); setActiveDropdown(null); }}
+              className="w-9 h-9 flex items-center justify-center text-[#8FA4C8] hover:text-white hover:bg-white/6 rounded-lg transition-all"
+              aria-label="Buscar"
             >
-              <Search size={18} />
+              <Search size={17} />
             </button>
+
+            {/* Language — desktop only */}
+            <div className="hidden md:flex items-center gap-1 text-[12px] text-[#8FA4C8] border border-white/12 rounded-md px-2.5 py-1">
+              <button className="hover:text-[#C9A55C] transition-colors font-semibold text-white">ES</button>
+              <span className="opacity-30 text-[10px]">|</span>
+              <button className="hover:text-[#C9A55C] transition-colors">EN</button>
+            </div>
+
             <a
               href="#canal-confidencial"
-              className="hidden md:flex items-center gap-2 px-4 py-2 bg-[#C9A55C] hover:bg-[#D4B567] text-[#071D49] text-[12px] font-bold rounded transition-all duration-200 tracking-wider uppercase font-['Plus_Jakarta_Sans']"
+              className="hidden md:flex items-center gap-2 px-4 py-2 bg-[#C9A55C] hover:bg-[#D4B567] active:bg-[#B8924A] text-[#071D49] text-[12px] font-bold rounded-md transition-all duration-200 tracking-wider uppercase font-['Plus_Jakarta_Sans'] shadow-[0_0_16px_rgba(201,165,92,0.25)]"
             >
-              <Lock size={13} />
+              <Lock size={12} />
               Canal Confidencial
             </a>
+
             <button
-              className="lg:hidden w-9 h-9 flex items-center justify-center text-[#8FA4C8]"
+              className="lg:hidden w-9 h-9 flex items-center justify-center text-[#8FA4C8] hover:text-white"
               onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Menú"
             >
               {menuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -256,17 +428,17 @@ function Header() {
 
         {/* Search bar */}
         {searchOpen && (
-          <div className="border-t border-[#C9A55C]/20 px-6 md:px-8 py-3 bg-[#051535]">
+          <div className="border-t border-white/8 px-6 md:px-10 py-3 bg-[#030E28]">
             <div className="max-w-[1400px] mx-auto flex items-center gap-3">
-              <Search size={16} className="text-[#8FA4C8] shrink-0" />
+              <Search size={15} className="text-[#8FA4C8] shrink-0" />
               <input
                 autoFocus
                 type="text"
                 placeholder="Buscar en el portal DNI..."
-                className="flex-1 bg-transparent text-white placeholder-[#8FA4C8]/60 text-sm outline-none font-['Plus_Jakarta_Sans']"
+                className="flex-1 bg-transparent text-white placeholder-[#8FA4C8]/50 text-sm outline-none font-['Plus_Jakarta_Sans']"
               />
               <button onClick={() => setSearchOpen(false)} className="text-[#8FA4C8] hover:text-white">
-                <X size={16} />
+                <X size={15} />
               </button>
             </div>
           </div>
@@ -274,23 +446,94 @@ function Header() {
 
         {/* Mobile menu */}
         {menuOpen && (
-          <div className="lg:hidden bg-[#051535] border-t border-[#C9A55C]/20 px-6 py-4 space-y-1">
-            {NAV_LINKS.map((link) => (
+          <div className="lg:hidden bg-[#051535] border-t border-white/10 px-5 py-4">
+            {/* Inicio */}
+            <a
+              href="#"
+              className="block px-3 py-3 text-[#C8D8F0] hover:text-white hover:bg-white/5 rounded-lg text-sm font-medium font-['Plus_Jakarta_Sans']"
+              onClick={() => setMenuOpen(false)}
+            >
+              Inicio
+            </a>
+
+            {/* Institución accordion */}
+            <div>
+              <button
+                onClick={() => setMobileExpanded(mobileExpanded === "inst" ? null : "inst")}
+                className="w-full flex items-center justify-between px-3 py-3 text-[#C8D8F0] hover:text-white hover:bg-white/5 rounded-lg text-sm font-medium font-['Plus_Jakarta_Sans']"
+              >
+                Institución
+                <ChevronDown size={14} className={cn("transition-transform", mobileExpanded === "inst" && "rotate-180")} />
+              </button>
+              {mobileExpanded === "inst" && (
+                <div className="ml-4 mb-1 border-l border-[#C9A55C]/20 pl-3 space-y-0.5">
+                  {INSTITUCION_ITEMS.map((item) => (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      className="block px-3 py-2 text-[#8FA4C8] hover:text-white text-[13px] rounded-md hover:bg-white/5 font-['Plus_Jakarta_Sans']"
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      {item.label}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Áreas de Trabajo accordion */}
+            <div>
+              <button
+                onClick={() => setMobileExpanded(mobileExpanded === "areas" ? null : "areas")}
+                className="w-full flex items-center justify-between px-3 py-3 text-[#C8D8F0] hover:text-white hover:bg-white/5 rounded-lg text-sm font-medium font-['Plus_Jakarta_Sans']"
+              >
+                Áreas de Trabajo
+                <ChevronDown size={14} className={cn("transition-transform", mobileExpanded === "areas" && "rotate-180")} />
+              </button>
+              {mobileExpanded === "areas" && (
+                <div className="ml-4 mb-1 border-l border-[#C9A55C]/20 pl-3 space-y-0.5">
+                  {AREAS_ITEMS.map((item) => (
+                    <a
+                      key={item.label}
+                      href="#areas-trabajo"
+                      className="flex items-center gap-2 px-3 py-2 text-[#8FA4C8] hover:text-white text-[13px] rounded-md hover:bg-white/5 font-['Plus_Jakarta_Sans']"
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      <span className="text-[#C9A55C]">{item.icon}</span>
+                      {item.label}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* SNI */}
+            <a
+              href="#sni"
+              className="block px-3 py-3 text-[#C8D8F0] hover:text-white hover:bg-white/5 rounded-lg text-sm font-medium font-['Plus_Jakarta_Sans']"
+              onClick={() => setMenuOpen(false)}
+            >
+              Sistema Nacional de Inteligencia
+            </a>
+
+            {/* Contacto */}
+            <a
+              href="#contacto"
+              className="block px-3 py-3 text-[#C8D8F0] hover:text-white hover:bg-white/5 rounded-lg text-sm font-medium font-['Plus_Jakarta_Sans']"
+              onClick={() => setMenuOpen(false)}
+            >
+              Contacto
+            </a>
+
+            <div className="border-t border-white/10 mt-3 pt-3">
               <a
-                key={link.label}
-                href={link.href}
-                className="block px-3 py-2.5 text-[#C8D8F0] hover:text-white hover:bg-white/5 rounded text-sm font-medium"
+                href="#canal-confidencial"
+                className="flex items-center justify-center gap-2 px-4 py-3 bg-[#C9A55C] hover:bg-[#D4B567] text-[#071D49] text-sm font-bold rounded-lg tracking-wider uppercase font-['Plus_Jakarta_Sans']"
                 onClick={() => setMenuOpen(false)}
               >
-                {link.label}
+                <Lock size={14} /> Canal Confidencial
               </a>
-            ))}
-            <a
-              href="#canal-confidencial"
-              className="mt-3 flex items-center gap-2 px-4 py-2.5 bg-[#C9A55C] text-[#071D49] text-sm font-bold rounded"
-            >
-              <Lock size={14} /> Canal Confidencial
-            </a>
+            </div>
           </div>
         )}
       </header>
@@ -843,12 +1086,15 @@ function Footer() {
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
             <div className="flex items-center gap-3 mb-5">
-              <div className="w-10 h-10 rounded-full bg-[#C9A55C]/10 border border-[#C9A55C]/40 flex items-center justify-center">
-                <Shield size={18} className="text-[#C9A55C]" />
-              </div>
+              <img
+                src={dniLogo}
+                alt="DNI — Dirección Nacional de Inteligencia"
+                className="object-contain"
+                style={{ width: "52px", height: "52px" }}
+              />
               <div>
-                <div className="text-white font-bold font-['Plus_Jakarta_Sans']">DNI</div>
-                <div className="text-[#8FA4C8] text-[9px] tracking-widest uppercase font-['JetBrains_Mono']">República Dominicana</div>
+                <div className="text-white font-bold font-['Plus_Jakarta_Sans'] text-[14px] leading-tight">Dirección Nacional<br />de Inteligencia</div>
+                <div className="text-[#C9A55C] text-[10px] tracking-wide font-['Plus_Jakarta_Sans'] mt-0.5">República Dominicana</div>
               </div>
             </div>
             <p className="text-[#8FA4C8] text-sm leading-relaxed mb-5 font-['Plus_Jakarta_Sans']">
@@ -935,11 +1181,9 @@ export default function App() {
       <Header />
       <main>
         <Hero />
-        <NationalStatusPanel />
         <QuickAccess />
         <InstitutionalSection />
         <AreasOfWork />
-        <SituationCenter />
         <FeaturedNews />
         <EducationalHub />
         <FinalCTA />
