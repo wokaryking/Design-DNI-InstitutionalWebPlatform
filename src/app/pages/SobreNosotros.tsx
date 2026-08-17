@@ -1,7 +1,7 @@
 import { CheckCircle, XCircle, Shield, Users, Eye, Globe, ArrowRight } from "lucide-react";
 import { Link } from "react-router";
 import { PageHero, SectionLabel } from "../components/shared";
-import dniLogo from "@/imports/logodni.png";
+import dniLogo from "@/imports/logo-new-vercion.png";
 import { YouTubeVideo } from '@/app/components/YouTubeVideo';
 
 const DOES = [
@@ -62,7 +62,7 @@ export default function SobreNosotros() {
               <div className="relative">
                 <div className="w-52 h-52 md:w-64 md:h-64 rounded-full bg-[#C9A55C]/8 border border-[#C9A55C]/20 flex items-center justify-center">
                   <img src={dniLogo} alt="Escudo oficial de la DNI" className="w-40 h-40 md:w-52 md:h-52 object-contain" />
-                </div>
+                </div>        {/* auiiii */}
                 <div className="absolute inset-0 rounded-full border border-[#C9A55C]/10 scale-125" />
                 <div className="absolute inset-0 rounded-full border border-[#C9A55C]/5 scale-150" />
               </div>
