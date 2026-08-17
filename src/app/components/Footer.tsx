@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { Phone, Mail, MapPin } from "lucide-react";
-import dniLogo from "@/imports/logodni.png";
+import dniLogo from "@/imports/logo-new-vercion.png";
 
 export default function Footer() {
   return (

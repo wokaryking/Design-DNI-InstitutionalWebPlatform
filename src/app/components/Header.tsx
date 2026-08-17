@@ -4,7 +4,7 @@ import {
   Search, Menu, X, ChevronDown, Lock,
   Monitor, Target, Globe, AlertTriangle, TrendingUp, Shield,
 } from "lucide-react";
-import dniLogo from "@/imports/logodni.png";
+import dniLogo from "@/imports/logo-new-vercion.png";
 import { cn } from "./shared";
 
 const INSTITUCION_ITEMS = [
