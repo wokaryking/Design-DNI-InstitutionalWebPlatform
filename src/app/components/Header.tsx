@@ -17,17 +17,18 @@ const INSTITUCION_ITEMS = [
 ];
 
 const AREAS_ITEMS = [
-  { label: "Ciberseguridad", desc: "Defensa digital nacional", icon: <Monitor size={15} /> },
-  { label: "Criptografía Nacional", desc: "Seguridad de comunicaciones", icon: <Lock size={15} /> },
-  { label: "Investigación de Ciberdelitos", desc: "Análisis de amenazas digitales", icon: <Search size={15} /> },
-  { label: "Inteligencia Estratégica", desc: "Análisis de largo plazo", icon: <Target size={15} /> },
-  { label: "Cooperación Internacional", desc: "Alianzas con agencias aliadas", icon: <Globe size={15} /> },
-  { label: "Inteligencia Delictiva", desc: "Crimen organizado y redes", icon: <AlertTriangle size={15} /> },
-  { label: "Inteligencia Prospectiva", desc: "Escenarios y tendencias futuras", icon: <TrendingUp size={15} /> },
-  { label: "Contrainteligencia", desc: "Detección y neutralización", icon: <Shield size={15} /> },
+  { label: "Ciberseguridad", to: "/areas-de-trabajo/ciberseguridad", desc: "Defensa digital nacional", icon: <Monitor size={15} /> },
+  { label: "Criptografía Nacional", to: "/areas-de-trabajo/criptografia-nacional", desc: "Seguridad de comunicaciones", icon: <Lock size={15} /> },
+  { label: "Investigación de Ciberdelitos", to: "/areas-de-trabajo/investigacion-ciberdelitos", desc: "Análisis de amenazas digitales", icon: <Search size={15} /> },
+  { label: "Inteligencia Estratégica", to: "/areas-de-trabajo/inteligencia-estrategica", desc: "Análisis de largo plazo", icon: <Target size={15} /> },
+  { label: "Cooperación Internacional", to: "/areas-de-trabajo/cooperacion-internacional", desc: "Alianzas con agencias aliadas", icon: <Globe size={15} /> },
+  { label: "Inteligencia Delictiva", to: "/areas-de-trabajo/inteligencia-delictiva", desc: "Crimen organizado y redes", icon: <AlertTriangle size={15} /> },
+  { label: "Inteligencia Prospectiva", to: "/areas-de-trabajo/inteligencia-prospectiva", desc: "Escenarios y tendencias futuras", icon: <TrendingUp size={15} /> },
+  { label: "Contrainteligencia", to: "/areas-de-trabajo/contrainteligencia", desc: "Detección y neutralización", icon: <Shield size={15} /> },
 ];
 
 const INSTITUCION_PATHS = INSTITUCION_ITEMS.map((i) => i.to);
+const AREAS_PATHS = AREAS_ITEMS.map((i) => i.to);
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -39,6 +40,7 @@ export default function Header() {
   const location = useLocation();
 
   const isInInstitucion = INSTITUCION_PATHS.includes(location.pathname);
+  const isInAreas = AREAS_PATHS.some((p) => location.pathname.startsWith(p)) || location.pathname.startsWith("/areas-de-trabajo");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -184,7 +186,10 @@ export default function Header() {
               <button
                 onMouseEnter={() => setActiveDropdown("areas")}
                 onClick={() => setActiveDropdown(activeDropdown === "areas" ? null : "areas")}
-                className="flex items-center gap-1.5 px-4 py-2 text-[13.5px] text-[#C8D8F0] hover:text-white font-medium font-['Plus_Jakarta_Sans'] tracking-wide transition-colors"
+                className={cn(
+                  "flex items-center gap-1.5 px-4 py-2 text-[13.5px] font-medium font-['Plus_Jakarta_Sans'] tracking-wide transition-colors",
+                  isInAreas || activeDropdown === "areas" ? "text-[#C9A55C]" : "text-[#C8D8F0] hover:text-white"
+                )}
               >
                 Áreas de Trabajo
                 <ChevronDown
@@ -207,8 +212,11 @@ export default function Header() {
                     {AREAS_ITEMS.map((item) => (
                       <Link
                         key={item.label}
-                        to="/#areas-trabajo"
-                        className="group flex items-start gap-3 px-3 py-2.5 rounded-lg hover:bg-white/5 transition-colors"
+                        to={item.to}
+                        className={cn(
+                          "group flex items-start gap-3 px-3 py-2.5 rounded-lg transition-colors",
+                          location.pathname === item.to ? "bg-white/8" : "hover:bg-white/5"
+                        )}
                       >
                         <div className="mt-0.5 w-7 h-7 rounded-md bg-[#C9A55C]/10 flex items-center justify-center text-[#C9A55C] shrink-0 group-hover:bg-[#C9A55C]/20 transition-colors">
                           {item.icon}
@@ -231,8 +239,11 @@ export default function Header() {
             {/* SNI with tooltip */}
             <div className="relative group">
               <Link
-                to="/#sni"
-                className="px-4 py-2 text-[13.5px] text-[#C8D8F0] hover:text-white transition-colors font-medium font-['Plus_Jakarta_Sans'] tracking-wide"
+                to="/sni"
+                className={cn(
+                  "px-4 py-2 text-[13.5px] transition-colors font-medium font-['Plus_Jakarta_Sans'] tracking-wide",
+                  location.pathname === "/sni" ? "text-[#C9A55C]" : "text-[#C8D8F0] hover:text-white"
+                )}
               >
                 SNI
               </Link>
@@ -242,8 +253,21 @@ export default function Header() {
             </div>
 
             <Link
-              to="#contacto"
-              className="px-4 py-2 text-[13.5px] text-[#C8D8F0] hover:text-white transition-colors font-medium font-['Plus_Jakarta_Sans'] tracking-wide"
+              to="/trabaja-con-nosotros"
+              className={cn(
+                "px-4 py-2 text-[13.5px] font-medium font-['Plus_Jakarta_Sans'] tracking-wide transition-colors",
+                location.pathname === "/trabaja-con-nosotros" ? "text-[#C9A55C]" : "text-[#C8D8F0] hover:text-white"
+              )}
+            >
+              Trabaja con Nosotros
+            </Link>
+
+            <Link
+              to="/contacto"
+              className={cn(
+                "px-4 py-2 text-[13.5px] font-medium font-['Plus_Jakarta_Sans'] tracking-wide transition-colors",
+                location.pathname === "/contacto" ? "text-[#C9A55C]" : "text-[#C8D8F0] hover:text-white"
+              )}
             >
               Contacto
             </Link>
@@ -266,7 +290,7 @@ export default function Header() {
             </div>
 
             <Link
-              to="#canal-confidencial"
+              to="/canal-confidencial"
               className="hidden md:flex items-center gap-2 px-4 py-2 bg-[#C9A55C] hover:bg-[#D4B567] text-[#071D49] text-[12px] font-bold rounded-md transition-all duration-200 tracking-wider uppercase font-['Plus_Jakarta_Sans'] shadow-[0_0_16px_rgba(201,165,92,0.2)]"
             >
               <Lock size={12} />
@@ -354,8 +378,11 @@ export default function Header() {
                   {AREAS_ITEMS.map((item) => (
                     <Link
                       key={item.label}
-                      to="/#areas-trabajo"
-                      className="flex items-center gap-2 px-3 py-2 text-[#8FA4C8] hover:text-white text-[13px] rounded-md hover:bg-white/5 font-['Plus_Jakarta_Sans']"
+                      to={item.to}
+                      className={cn(
+                        "flex items-center gap-2 px-3 py-2 text-[13px] rounded-md font-['Plus_Jakarta_Sans'] transition-colors",
+                        location.pathname === item.to ? "text-[#C9A55C] bg-[#C9A55C]/10" : "text-[#8FA4C8] hover:text-white hover:bg-white/5"
+                      )}
                     >
                       <span className="text-[#C9A55C]">{item.icon}</span>
                       {item.label}
@@ -366,21 +393,36 @@ export default function Header() {
             </div>
 
             <Link
-              to="/#sni"
-              className="block px-3 py-3 text-[#C8D8F0] hover:text-white hover:bg-white/5 rounded-lg text-sm font-medium font-['Plus_Jakarta_Sans']"
+              to="/sni"
+              className={cn(
+                "block px-3 py-3 hover:bg-white/5 rounded-lg text-sm font-medium font-['Plus_Jakarta_Sans'] transition-colors",
+                location.pathname === "/sni" ? "text-[#C9A55C]" : "text-[#C8D8F0] hover:text-white"
+              )}
             >
               Sistema Nacional de Inteligencia
             </Link>
             <Link
-              to="#contacto"
-              className="block px-3 py-3 text-[#C8D8F0] hover:text-white hover:bg-white/5 rounded-lg text-sm font-medium font-['Plus_Jakarta_Sans']"
+              to="/trabaja-con-nosotros"
+              className={cn(
+                "block px-3 py-3 hover:bg-white/5 rounded-lg text-sm font-medium font-['Plus_Jakarta_Sans'] transition-colors",
+                location.pathname === "/trabaja-con-nosotros" ? "text-[#C9A55C]" : "text-[#C8D8F0] hover:text-white"
+              )}
+            >
+              Trabaja con Nosotros
+            </Link>
+            <Link
+              to="/contacto"
+              className={cn(
+                "block px-3 py-3 hover:bg-white/5 rounded-lg text-sm font-medium font-['Plus_Jakarta_Sans'] transition-colors",
+                location.pathname === "/contacto" ? "text-[#C9A55C]" : "text-[#C8D8F0] hover:text-white"
+              )}
             >
               Contacto
             </Link>
 
             <div className="border-t border-white/10 mt-3 pt-3">
               <Link
-                to="#canal-confidencial"
+                to="/canal-confidencial"
                 className="flex items-center justify-center gap-2 px-4 py-3 bg-[#C9A55C] hover:bg-[#D4B567] text-[#071D49] text-sm font-bold rounded-lg tracking-wider uppercase font-['Plus_Jakarta_Sans']"
               >
                 <Lock size={14} /> Canal Confidencial

@@ -62,21 +62,20 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Transparencia */}
+          {/* Portal links */}
           <div>
-            <h4 className="text-white font-semibold text-sm mb-4 font-['Plus_Jakarta_Sans'] tracking-wide">Transparencia</h4>
+            <h4 className="text-white font-semibold text-sm mb-4 font-['Plus_Jakarta_Sans'] tracking-wide">Portal</h4>
             <ul className="space-y-2.5">
               {[
-                "Portal de Transparencia",
-                "Informes Públicos",
-                "Preguntas Frecuentes",
-                "Solicitud de Información",
-                "Acceso a Datos",
+                { label: "Sistema Nacional de Inteligencia", to: "/sni" },
+                { label: "¿Qué es la Inteligencia?", to: "/que-es-la-inteligencia" },
+                { label: "Trabaja con Nosotros", to: "/trabaja-con-nosotros" },
+                { label: "Contacto", to: "/contacto" },
               ].map((l) => (
-                <li key={l}>
-                  <a href="#" className="text-[#8FA4C8] hover:text-[#C9A55C] text-sm transition-colors font-['Plus_Jakarta_Sans']">
-                    {l}
-                  </a>
+                <li key={l.to}>
+                  <Link to={l.to} className="text-[#8FA4C8] hover:text-[#C9A55C] text-sm transition-colors font-['Plus_Jakarta_Sans']">
+                    {l.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -87,9 +86,9 @@ export default function Footer() {
             <h4 className="text-white font-semibold text-sm mb-4 font-['Plus_Jakarta_Sans'] tracking-wide">Contacto</h4>
             <div className="space-y-3">
               {[
-                { icon: <MapPin size={13} />, text: "Av. México esq. Pedro Henríquez Ureña, Santo Domingo, D.N." },
-                { icon: <Phone size={13} />, text: "+1 (809) 000-0000" },
-                { icon: <Mail size={13} />, text: "info@dni.gov.do" },
+                { icon: <MapPin size={13} />, text: "[Dirección oficial DNI]" },
+                { icon: <Phone size={13} />, text: "[Teléfono oficial DNI]" },
+                { icon: <Mail size={13} />, text: "[Correo oficial DNI]" },
               ].map((c, i) => (
                 <div key={i} className="flex gap-2.5 text-[#8FA4C8] text-sm font-['Plus_Jakarta_Sans']">
                   <span className="text-[#C9A55C] mt-0.5 shrink-0">{c.icon}</span>
@@ -97,6 +96,12 @@ export default function Footer() {
                 </div>
               ))}
             </div>
+            <Link
+              to="/contacto"
+              className="inline-flex items-center gap-1.5 mt-4 text-[#C9A55C] text-xs font-semibold hover:text-[#D4B567] transition-colors font-['Plus_Jakarta_Sans']"
+            >
+              Ver todos los canales →
+            </Link>
           </div>
         </div>
 

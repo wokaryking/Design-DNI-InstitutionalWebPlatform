@@ -1,0 +1,47 @@
+GUÍA: CÓMO CAMBIAR COLORES DE SECCIONES
+========================================
+
+Los colores de sección están directamente en los archivos de cada página.
+Aquí está exactamente dónde buscar:
+
+PÁGINAS DE ÁREAS (todas en src/app/pages/areas/):
+--------------------------------------------------
+Ciberseguridad.tsx
+Contrainteligencia.tsx
+CooperacionInternacional.tsx
+CriptografiaNacional.tsx
+InteligenciaDelictiva.tsx
+InvestigacionCiberdelitos.tsx
+InteligenciaEstrategica.tsx
+InteligenciaProspectiva.tsx
+
+En cada una, busca: <section className="py-14
+Verás algo así:
+
+  <section className="py-14 md:py-20 bg-[#071D49]">   ← cambiar a bg-white
+  <section className="py-14 md:py-20 bg-[#051535]">   ← dejar oscuro
+  <section className="py-14 bg-[#071D49]">            ← cambiar a bg-[#F5F7FA]
+
+Cuando cambias la sección a blanca, también cambia estos colores de texto dentro de ella:
+
+  text-white        →  text-[#071D49]
+  text-[#C8D8F0]    →  text-[#071D49]/75
+  text-[#8FA4C8]    →  text-[#071D49]/55
+  bg-[#051535]      →  bg-[#F5F7FA]   (tarjetas internas)
+
+
+OTRAS PÁGINAS (en src/app/pages/):
+-----------------------------------
+Home.tsx
+SobreNosotros.tsx
+MisionVisionValores.tsx
+NuestraHistoria.tsx
+MarcoLegal.tsx
+RolDNI.tsx
+QueEsInteligencia.tsx
+TrabajaConNosotros.tsx
+Contacto.tsx
+SNI.tsx
+
+Misma lógica: busca <section className= y localiza los
+bg-[#071D49] o bg-[#051535] que quieras aclarar.

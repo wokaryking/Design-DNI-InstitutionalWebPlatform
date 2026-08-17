@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { FileText, Download, ExternalLink, BookOpen, Scale, Shield, ChevronRight } from "lucide-react";
 import { PageHero, SectionLabel } from "../components/shared";
 
@@ -79,6 +80,9 @@ const SAFEGUARDS = [
 ];
 
 export default function MarcoLegal() {
+  const [activeFilter, setActiveFilter] = useState("Todos");
+  const filtered = activeFilter === "Todos" ? DOCUMENTS : DOCUMENTS.filter(d => d.type === activeFilter);
+
   return (
     <>
       <PageHero
@@ -129,8 +133,9 @@ export default function MarcoLegal() {
             {["Todos", "Constitución", "Ley", "Reglamento", "Convenio", "Decreto"].map((f) => (
               <button
                 key={f}
+                onClick={() => setActiveFilter(f)}
                 className={`px-4 py-1.5 rounded-full text-[12px] font-semibold font-['Plus_Jakarta_Sans'] transition-all border ${
-                  f === "Todos"
+                  activeFilter === f
                     ? "bg-[#C9A55C] text-[#071D49] border-[#C9A55C]"
                     : "text-[#8FA4C8] border-white/10 hover:border-[#C9A55C]/40 hover:text-white"
                 }`}
@@ -141,7 +146,7 @@ export default function MarcoLegal() {
           </div>
 
           <div className="space-y-4">
-            {DOCUMENTS.map((doc, i) => (
+            {filtered.map((doc, i) => (
               <div
                 key={i}
                 className="group flex flex-col sm:flex-row sm:items-center gap-4 p-5 bg-[#071D49] border border-[#C9A55C]/15 hover:border-[#C9A55C]/35 rounded-xl transition-all duration-300"

@@ -1,12 +1,25 @@
 import { createBrowserRouter } from "react-router";
 import Root from "./pages/Root";
 import Home from "./pages/Home";
+import CanalConfidencial from "./pages/CanalConfidencial";
 import SobreNosotros from "./pages/SobreNosotros";
 import NuestraHistoria from "./pages/NuestraHistoria";
 import MisionVisionValores from "./pages/MisionVisionValores";
 import MarcoLegal from "./pages/MarcoLegal";
 import RolDNI from "./pages/RolDNI";
 import QueEsInteligencia from "./pages/QueEsInteligencia";
+import TrabajaConNosotros from "./pages/TrabajaConNosotros";
+import Contacto from "./pages/Contacto";
+import SNI from "./pages/SNI";
+import AreasLayout from "./pages/areas/AreasLayout";
+import Ciberseguridad from "./pages/areas/Ciberseguridad";
+import CriptografiaNacional from "./pages/areas/CriptografiaNacional";
+import InvestigacionCiberdelitos from "./pages/areas/InvestigacionCiberdelitos";
+import InteligenciaEstrategica from "./pages/areas/InteligenciaEstrategica";
+import CooperacionInternacional from "./pages/areas/CooperacionInternacional";
+import InteligenciaDelictiva from "./pages/areas/InteligenciaDelictiva";
+import InteligenciaProspectiva from "./pages/areas/InteligenciaProspectiva";
+import Contrainteligencia from "./pages/areas/Contrainteligencia";
 
 function NotFound() {
   return (
@@ -33,6 +46,24 @@ export const router = createBrowserRouter([
       { path: "marco-legal", Component: MarcoLegal },
       { path: "rol-de-la-dni", Component: RolDNI },
       { path: "que-es-la-inteligencia", Component: QueEsInteligencia },
+      { path: "trabaja-con-nosotros", Component: TrabajaConNosotros },
+      { path: "contacto", Component: Contacto },
+      { path: "sni", Component: SNI },
+      { path: "canal-confidencial", Component: CanalConfidencial },
+      {
+        path: "areas-de-trabajo",
+        Component: AreasLayout,
+        children: [
+          { path: "ciberseguridad", Component: Ciberseguridad },
+          { path: "criptografia-nacional", Component: CriptografiaNacional },
+          { path: "investigacion-ciberdelitos", Component: InvestigacionCiberdelitos },
+          { path: "inteligencia-estrategica", Component: InteligenciaEstrategica },
+          { path: "cooperacion-internacional", Component: CooperacionInternacional },
+          { path: "inteligencia-delictiva", Component: InteligenciaDelictiva },
+          { path: "inteligencia-prospectiva", Component: InteligenciaProspectiva },
+          { path: "contrainteligencia", Component: Contrainteligencia },
+        ],
+      },
       { path: "*", Component: NotFound },
     ],
   },

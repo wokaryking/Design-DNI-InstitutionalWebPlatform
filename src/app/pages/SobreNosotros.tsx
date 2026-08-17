@@ -2,6 +2,7 @@ import { CheckCircle, XCircle, Shield, Users, Eye, Globe, ArrowRight } from "luc
 import { Link } from "react-router";
 import { PageHero, SectionLabel } from "../components/shared";
 import dniLogo from "@/imports/logodni.png";
+import { YouTubeVideo } from '@/app/components/YouTubeVideo';
 
 const DOES = [
   "Recolectar, procesar, analizar y difundir información de inteligencia estratégica.",
@@ -71,14 +72,14 @@ export default function SobreNosotros() {
       </section>
 
       {/* What DNI Does / Does Not */}
-      <section className="py-16 md:py-20 bg-[#051535]">
+      <section className="py-16 md:py-20 bg-[#F5F7FA]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-10">
           <div className="text-center mb-12">
             <SectionLabel>Alcance Institucional</SectionLabel>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-white font-['Plus_Jakarta_Sans']">
+            <h2 className="text-2xl md:text-3xl font-extrabold text-[#071D49] font-['Plus_Jakarta_Sans']">
               Lo que hace la DNI — y lo que no hace
             </h2>
-            <p className="text-[#8FA4C8] mt-3 max-w-xl mx-auto text-sm font-['Plus_Jakarta_Sans']">
+            <p className="text-[#071D49]/55 mt-3 max-w-xl mx-auto text-sm font-['Plus_Jakarta_Sans']">
               La transparencia sobre el alcance de nuestras funciones es esencial en una democracia constitucional.
             </p>
           </div>
@@ -143,26 +144,38 @@ export default function SobreNosotros() {
       </section>
 
       {/* Video Section */}
-      <section className="py-16 md:py-20 bg-[#051535]">
+      <section className="py-16 md:py-20 bg-white">
         <div className="max-w-[900px] mx-auto px-6 md:px-10">
           <div className="text-center mb-8">
             <SectionLabel>Video Institucional</SectionLabel>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-white font-['Plus_Jakarta_Sans']">
+            <h2 className="text-2xl md:text-3xl font-extrabold text-[#071D49] font-['Plus_Jakarta_Sans']">
               Conozca nuestra institución
             </h2>
-            <p className="text-[#8FA4C8] mt-2 text-sm font-['Plus_Jakarta_Sans']">[OFFICIAL INSTITUTIONAL VIDEO]</p>
+            <p className="text-[#071D49]/55 mt-2 text-sm font-['Plus_Jakarta_Sans']">[OFFICIAL INSTITUTIONAL VIDEO]</p>
           </div>
-          <div className="rounded-xl overflow-hidden border border-[#C9A55C]/20 bg-[#071D49]">
+          <div className="rounded-xl overflow-hidden border border-[#071D49]/10 bg-[#F5F7FA]">
+  <iframe
+    width="100%"
+    height="100%"
+    style={{ aspectRatio: "16/9" }}
+    src="https://www.youtube.com/embed/DB0kR7Tsotw"
+    title="Video"
+    frameBorder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowFullScreen
+  ></iframe>
+</div>
+         {/*  <div className="rounded-xl overflow-hidden border border-[#C9A55C]/20 bg-[#071D49]">
             <video
               controls
               preload="metadata"
               poster="VIDEO_POSTER_URL_HERE"
               className="w-full aspect-video"
             >
-              <source src="VIDEO_URL_HERE" type="video/mp4" />
+              <source src="https://youtu.be/DB0kR7Tsotw" type="video/mp4" />   
               Tu navegador no soporta el elemento de video.
             </video>
-          </div>
+          </div> */}
         </div>
       </section>
 

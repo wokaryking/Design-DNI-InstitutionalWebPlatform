@@ -5,7 +5,7 @@ import {
   AlertTriangle, Info,
 } from "lucide-react";
 import { Link } from "react-router";
-import heroImg from "@/imports/ChatGPT_Image_21_jun_2026__14_10_49.png";
+//import heroImg from "@/imports/ChatGPT_Image_21_jun_2026__14_10_49.png";  
 import { SectionLabel } from "../components/shared";
 
 // ─── Quick Access ─────────────────────────────────────────────────────────────
@@ -54,7 +54,7 @@ export default function Home() {
       {/* Hero */}
       <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-[#071D49]">
         <div className="absolute inset-0">
-          <img src={heroImg} alt="Sede institucional de la DNI con globo holográfico y bandera dominicana" className="w-full h-full object-cover object-center opacity-60" />
+          {/* <img src={heroImg} alt="Sede institucional de la DNI con globo holográfico y bandera dominicana" className="w-full h-full object-cover object-center opacity-60" /> */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#071D49] via-[#071D49]/80 to-[#071D49]/30" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#071D49] via-transparent to-[#071D49]/40" />
         </div>
@@ -266,9 +266,9 @@ export default function Home() {
               Si tienes información sobre actividades que puedan comprometer la seguridad nacional, repórtala de forma anónima y segura.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="#" className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#C9A55C] hover:bg-[#D4B567] text-[#071D49] font-extrabold text-sm rounded transition-all duration-200 tracking-wider uppercase font-['Plus_Jakarta_Sans'] shadow-[0_0_30px_rgba(201,165,92,0.3)]">
+              <Link to="/canal-confidencial" className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-[#C9A55C] hover:bg-[#D4B567] text-[#071D49] font-extrabold text-sm rounded transition-all duration-200 tracking-wider uppercase font-['Plus_Jakarta_Sans'] shadow-[0_0_30px_rgba(201,165,92,0.3)]">
                 <Lock size={16} /> Acceder al Canal Confidencial
-              </a>
+              </Link>
               <a href="#" className="inline-flex items-center justify-center gap-2 px-8 py-4 border border-white/20 text-white hover:bg-white/5 font-semibold text-sm rounded transition-all duration-200 font-['Plus_Jakarta_Sans']">
                 <Info size={16} /> ¿Cómo funciona?
               </a>
