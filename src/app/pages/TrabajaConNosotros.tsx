@@ -774,7 +774,7 @@ export default function TrabajaConNosotros() {
             )}
           </div>
 
-          <div className="bg-[#071D49] border border-[#C9A55C]/15 rounded-2xl p-6 md:p-8">
+          <div className="bg-[#ffff] border border-[#C9A55C]/15 rounded-2xl p-6 md:p-8">
             <ApplicationForm originArea={originArea} />
           </div>
         </div>
