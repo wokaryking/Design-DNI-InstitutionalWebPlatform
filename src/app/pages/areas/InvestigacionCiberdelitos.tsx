@@ -82,11 +82,11 @@ export default function InvestigacionCiberdelitos() {
         </div>
       </section>
 
-      <section className="py-14 bg-[#071D49]">
+      <section className="py-14 bg-[#ffffff]">
         <div className="max-w-[900px] mx-auto px-6 md:px-10">
           <div className="text-center mb-10">
             <SectionLabel accentColor="#EF4444">Metodología</SectionLabel>
-            <h2 className="text-xl font-extrabold text-white font-['Plus_Jakarta_Sans']">Proceso de investigación</h2>
+            <h2 className="text-xl font-extrabold text-white font-['Plus_Jakarta_Sans'] text-[#051535]">Proceso de investigación</h2>
           </div>
           <div className="grid sm:grid-cols-2 gap-5">
             {PROCESS.map((step) => (

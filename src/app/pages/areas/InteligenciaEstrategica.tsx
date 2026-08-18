@@ -69,11 +69,11 @@ export default function InteligenciaEstrategica() {
         </div>
       </section>
 
-      <section className="py-14 md:py-20 bg-[#051535]">
+      <section className="py-14 md:py-20 bg-[#ffffff]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-10">
           <div className="text-center mb-10">
             <SectionLabel accentColor="#C9A55C">Productos</SectionLabel>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-white font-['Plus_Jakarta_Sans']">Tipos de análisis</h2>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-white font-['Plus_Jakarta_Sans'] text-[#051535]">Tipos de análisis</h2>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {OUTPUTS.map((o) => (

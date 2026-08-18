@@ -59,7 +59,7 @@ export default function Ciberseguridad() {
                     <div className="h-1.5 bg-white/8 rounded-full overflow-hidden">
                       <div className="h-full rounded-full transition-all" style={{ width: `${t.level}%`, backgroundColor: t.color }} />
                     </div>
-                  </div>
+                  </div> 
                 ))}
               </div>
               <p className="text-[#8FA4C8] text-[11px] mt-4 font-['Plus_Jakarta_Sans']">[DATOS OFICIALES DNI — Sustituir con estadísticas reales]</p>
