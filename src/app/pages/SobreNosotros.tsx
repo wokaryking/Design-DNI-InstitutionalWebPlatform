@@ -1,7 +1,7 @@
 import { CheckCircle, XCircle, Shield, Users, Eye, Globe, ArrowRight } from "lucide-react";
 import { Link } from "react-router";
 import { PageHero, SectionLabel } from "../components/shared";
-import dniLogo from "@/imports/logo-new-vercion.png";
+import dniLogo from "@/imports/logo11.png";
 import { YouTubeVideo } from '@/app/components/YouTubeVideo';
 
 const DOES = [
