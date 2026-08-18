@@ -5,7 +5,7 @@ import {
   AlertTriangle, Info,
 } from "lucide-react";
 import { Link } from "react-router";
-//import heroImg from "@/imports/ChatGPT_Image_21_jun_2026__14_10_49.png";  
+import heroImg from "@/imports/fondo.png";  
 import { SectionLabel } from "../components/shared";
 
 // ─── Quick Access ─────────────────────────────────────────────────────────────
@@ -54,7 +54,7 @@ export default function Home() {
       {/* Hero */}
       <section className="relative min-h-[90vh] flex items-center overflow-hidden bg-[#071D49]">
         <div className="absolute inset-0">
-          {/* <img src={heroImg} alt="Sede institucional de la DNI con globo holográfico y bandera dominicana" className="w-full h-full object-cover object-center opacity-60" /> */}
+          {<img src={heroImg} alt="Sede institucional de la DNI con globo holográfico y bandera dominicana" className="w-full h-full object-cover object-center opacity-97" /> }
           <div className="absolute inset-0 bg-gradient-to-r from-[#071D49] via-[#071D49]/80 to-[#071D49]/30" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#071D49] via-transparent to-[#071D49]/40" />
         </div>
