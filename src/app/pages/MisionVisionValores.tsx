@@ -30,28 +30,28 @@ export default function MisionVisionValores() {
       />
 
       {/* Misión */}
-      <section className="py-16 md:py-24 bg-[#071D49]">
+      <section className="py-16 md:py-24 bg-[#ffffff]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-10">
           <div className="grid lg:grid-cols-2 gap-14 items-center">
             <div>
               <SectionLabel>Misión</SectionLabel>
-              <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-6 font-['Plus_Jakarta_Sans']">
+              <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-6 font-['Plus_Jakarta_Sans'] text-[#110d0d]">
                 Nuestra razón de ser
               </h2>
               <blockquote className="border-l-4 border-[#C9A55C] pl-6 py-2 mb-6">
-                <p className="text-white text-lg md:text-xl leading-relaxed font-['Plus_Jakarta_Sans'] font-light italic">
+                <p className="text-white text-lg md:text-xl leading-relaxed font-['Plus_Jakarta_Sans'] font-light italic text-[#060606]">
                   "Realizar actividades de inteligencia y contrainteligencia para la seguridad nacional e interior, a los fines de prevenir y contrarrestar cualquier riesgo, amenaza o agresión a la Constitución de la República, a las instituciones democráticas y a la seguridad y defensa de la nación."
                 </p>
               </blockquote>
-              <p className="text-[#8FA4C8] text-sm font-['JetBrains_Mono'] tracking-wide">
+              <p className="text-sm font-['JetBrains_Mono'] tracking-wide text-[#141415]">
                 — Ley No. 1-24, Artículo correspondiente
               </p>
             </div>
             <div className="flex justify-center">
-              <div className="relative w-64 h-64 flex items-center justify-center">
-                <div className="absolute inset-0 rounded-full border border-[#C9A55C]/15 animate-pulse" />
-                <div className="absolute inset-6 rounded-full border border-[#C9A55C]/20" />
-                <div className="absolute inset-12 rounded-full bg-[#C9A55C]/10 border border-[#C9A55C]/30 flex items-center justify-center">
+              <div className="relative w-64 h-64 flex items-center justify-center bg-[#14141500]">
+                <div className="absolute inset-0 rounded-full border border-[#051535]/15 animate-pulse bg-[#285fd600]" />
+                <div className="absolute inset-6 rounded-full border border-[#051535]/20 bg-[#00000000]" />
+                <div className="absolute inset-12 rounded-full bg-[#C9A55C]/10 border border-[#051535]/30 flex items-center justify-center text-[#0c0c0c]">
                   <Target size={44} className="text-[#C9A55C]" />
                 </div>
               </div>
@@ -98,14 +98,14 @@ export default function MisionVisionValores() {
       <div className="h-px bg-gradient-to-r from-transparent via-[#C9A55C]/30 to-transparent" />
 
       {/* Valores */}
-      <section className="py-16 md:py-24 bg-[#071D49]">
+      <section className="py-16 md:py-24 bg-[#ffffff]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-10">
           <div className="text-center mb-14">
             <SectionLabel>Valores</SectionLabel>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-white font-['Plus_Jakarta_Sans'] mb-4">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-white font-['Plus_Jakarta_Sans'] mb-4 text-[#051535]">
               Principios que guían nuestro actuar
             </h2>
-            <p className="text-[#8FA4C8] max-w-2xl mx-auto text-base font-['Plus_Jakarta_Sans']">
+            <p className="max-w-2xl mx-auto text-base font-['Plus_Jakarta_Sans'] text-[#000000]">
               "Ejercer sus atribuciones con apego al marco constitucional y legal vigente y pleno respeto de los derechos fundamentales, bajo los principios de:"
             </p>
           </div>
@@ -156,13 +156,13 @@ export default function MisionVisionValores() {
       </section>
 
       {/* Closing statement */}
-      <section className="py-16 bg-[#071D49] border-t border-[#C9A55C]/15">
+      <section className="py-16 border-t border-[#C9A55C]/15 bg-[#f9f9ff]">
         <div className="max-w-[800px] mx-auto px-6 text-center">
           <Heart size={32} className="text-[#C9A55C] mx-auto mb-5 opacity-70" />
-          <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-4 font-['Plus_Jakarta_Sans']">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-4 font-['Plus_Jakarta_Sans'] text-[#051535]">
             Nuestro compromiso con la nación
           </h2>
-          <p className="text-[#8FA4C8] text-base md:text-lg leading-relaxed font-['Plus_Jakarta_Sans']">
+          <p className="text-base md:text-lg leading-relaxed font-['Plus_Jakarta_Sans'] text-[#030303]">
             Cada acción de la Dirección Nacional de Inteligencia está fundamentada en la defensa de la Constitución, el respeto a los derechos humanos y el fortalecimiento del Estado democrático de Derecho de la República Dominicana.
           </p>
         </div>

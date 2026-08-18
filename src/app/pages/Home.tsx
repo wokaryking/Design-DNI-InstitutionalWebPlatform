@@ -90,7 +90,43 @@ export default function Home() {
         </div>
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[#071D49] to-transparent" />
       </section>
+      {/* Video Section */}
+      <section className="py-16 md:py-20 bg-white">
+        <div className="max-w-[900px] mx-auto px-6 md:px-10">
+          <div className="text-center mb-8">
+            <SectionLabel>Video Institucional</SectionLabel>
+            <h2 className="text-2xl md:text-3xl font-extrabold text-[#071D49] font-['Plus_Jakarta_Sans']">
+              Conozca nuestra institución
+            </h2>
+            <p className="text-[#071D49]/55 mt-2 text-sm font-['Plus_Jakarta_Sans']">[OFFICIAL INSTITUTIONAL VIDEO]</p>
+          </div>
+          <div className="rounded-xl overflow-hidden border border-[#071D49]/10 bg-[#F5F7FA]">
+  <iframe
+    width="100%"
+    height="100%"
+    style={{ aspectRatio: "16/9" }}
+    src="https://www.youtube.com/embed/DB0kR7Tsotw"
+    title="Video"
+    frameBorder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowFullScreen
+  ></iframe>
+</div>
+         {/*  <div className="rounded-xl overflow-hidden border border-[#C9A55C]/20 bg-[#071D49]">
+            <video
+              controls
+              preload="metadata"
+              poster="VIDEO_POSTER_URL_HERE"
+              className="w-full aspect-video"
+            >
+              <source src="https://youtu.be/DB0kR7Tsotw" type="video/mp4" />   
+              Tu navegador no soporta el elemento de video.
+            </video>
+          </div> */}
+        </div>
+      </section>
 
+      
       {/* Quick Access */}
       <section className="py-16 md:py-20 bg-[#071D49]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-8">
@@ -115,7 +151,7 @@ export default function Home() {
       </section>
 
       {/* Institutional Section */}
-      <section id="sobre-nosotros" className="py-16 md:py-24 bg-[#051535]">
+      <section id="sobre-nosotros" className="py-16 md:py-24 bg-[#ffffff]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
@@ -123,7 +159,7 @@ export default function Home() {
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white leading-tight mb-6 font-['Plus_Jakarta_Sans']">
                 Inteligencia Estratégica para una Nación Segura y Democrática
               </h2>
-              <p className="text-[#8FA4C8] text-base md:text-lg leading-relaxed mb-6 font-['Plus_Jakarta_Sans']">
+              <p className="text-base md:text-lg leading-relaxed mb-6 font-['Plus_Jakarta_Sans'] text-[#0f0f11]">
                 La Dirección Nacional de Inteligencia (DNI) es el organismo rector del Sistema Nacional de Inteligencia de la República Dominicana. Bajo mandato constitucional, producimos inteligencia oportuna y confiable para proteger el Estado democrático de Derecho.
               </p>
               <Link to="/sobre-nosotros" className="inline-flex items-center gap-2 text-[#C9A55C] hover:text-[#D4B567] font-semibold text-sm transition-colors font-['Plus_Jakarta_Sans']">
@@ -146,7 +182,7 @@ export default function Home() {
       </section>
 
       {/* Areas of Work */}
-      <section id="areas-trabajo" className="py-16 md:py-24 bg-[#071D49]">
+      <section id="areas-trabajo" className="py-16 md:py-24 bg-[#051535]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div>

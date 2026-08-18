@@ -17,10 +17,10 @@ export function SectionLabel({
   accentColor?: string;
 }) {
   return (
-    <div className="flex items-center gap-3 mb-3">
+    <div className="flex items-center gap-3 mb-3 text-[#2d78ea] text-[48px]">
       <div className="w-1 h-4" style={{ backgroundColor: accentColor }} />
       <span
-        className="text-xs font-bold tracking-[0.2em] uppercase font-['JetBrains_Mono']"
+        className="font-bold tracking-[0.2em] uppercase font-['JetBrains_Mono'] text-[16px]"
         style={{ color: accentColor }}
       >
         {children}

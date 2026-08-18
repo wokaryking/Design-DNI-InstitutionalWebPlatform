@@ -90,7 +90,7 @@ export default function Ciberseguridad() {
       </section>
 
       {/* Video placeholder */}
-      <section className="py-14 bg-[#071D49]">
+      <section className="py-14 bg-[#071d49]">
         <div className="max-w-[900px] mx-auto px-6 md:px-10">
           <div className="text-center mb-8">
             <SectionLabel accentColor="#3B82F6">Conoce más</SectionLabel>

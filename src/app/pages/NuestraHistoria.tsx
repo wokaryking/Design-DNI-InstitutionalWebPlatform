@@ -63,15 +63,15 @@ export default function NuestraHistoria() {
       />
 
       {/* Intro */}
-      <section className="py-16 md:py-20 bg-[#071D49]">
+      <section className="py-16 md:py-20 bg-[#132a59]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-10">
           <div className="grid lg:grid-cols-3 gap-10">
             <div className="lg:col-span-2">
               <SectionLabel>Introducción</SectionLabel>
-              <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-5 font-['Plus_Jakarta_Sans']">
+              <h2 className="text-2xl md:text-3xl font-extrabold text-white mb-5 font-['Plus_Jakarta_Sans'] text-[#000000]">
                 Una institución al servicio de la nación dominicana
               </h2>
-              <p className="text-[#8FA4C8] text-base leading-relaxed mb-4 font-['Plus_Jakarta_Sans']">
+              <p className="text-base leading-relaxed mb-4 font-['Plus_Jakarta_Sans'] text-[#0e0e0e]">
                 [OFFICIAL HISTORY CONTENT — Introducción general a la historia institucional de la Dirección Nacional de Inteligencia. El equipo de comunicaciones debe proveer el texto oficial que describa los orígenes, evolución y contexto histórico de la institución.]
               </p>
               <p className="text-[#8FA4C8] text-base leading-relaxed font-['Plus_Jakarta_Sans']">

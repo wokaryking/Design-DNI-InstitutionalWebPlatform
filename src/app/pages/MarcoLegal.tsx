@@ -93,7 +93,7 @@ export default function MarcoLegal() {
       />
 
       {/* Intro */}
-      <section className="py-16 md:py-20 bg-[#071D49]">
+      <section className="py-16 md:py-20 bg-[#ffffff]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-10">
           <div className="grid lg:grid-cols-3 gap-6">
             {[
@@ -194,11 +194,11 @@ export default function MarcoLegal() {
       </section>
 
       {/* Safeguards */}
-      <section className="py-16 md:py-20 bg-[#071D49]">
+      <section className="py-16 md:py-20 bg-[#ffffff]">
         <div className="max-w-[1400px] mx-auto px-6 md:px-10">
           <div className="text-center mb-12">
             <SectionLabel>Garantías Ciudadanas</SectionLabel>
-            <h2 className="text-2xl md:text-3xl font-extrabold text-white font-['Plus_Jakarta_Sans']">
+            <h2 className="text-2xl md:text-3xl font-extrabold text-white font-['Plus_Jakarta_Sans'] text-[#051535]">
               Mecanismos de control y supervisión
             </h2>
           </div>
